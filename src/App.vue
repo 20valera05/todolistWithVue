@@ -11,6 +11,7 @@
       :taskId="index"
       @delete-task="handleDeleteTask"
       @is-move-task="handleMoveTask"
+      @update-task="handleUpdateTask"
     />
     <Input />
     <Counter v-if="submitedValue.length !== 0 || moveTask.length !== 0" :moveTask="moveTask" :submitedValue="submitedValue" />
@@ -34,6 +35,7 @@ import Counter from "./components/Counter.vue";
 import DeleteButton from "./components/buttons/DeleteButton.vue";
 import Message from "./components/Message.vue";
 import  useLocalStorage  from "./composables/localStorageFunction";
+
 
 export default {
   components: {
@@ -81,6 +83,10 @@ export default {
       handleCompleteDeleteTask(completeTaskId);
     };
 
+    const handleUpdateTask = ({id, value}) =>{
+      submitedValue.value[id] = value;
+    }
+
     return {
       submitedValue,
       handleDeleteTask,
@@ -88,6 +94,7 @@ export default {
       moveTask,
       handleCompletedMoveTask,
       handleCompleteDeleteTask,
+      handleUpdateTask
     };
   },
 };
