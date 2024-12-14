@@ -29,6 +29,7 @@ import { ref, watch, nextTick } from "vue";
 import DeleteButton from "./buttons/DeleteButton.vue";
 import MoveButton from "./buttons/MoveButton.vue";
 import Modal from "./buttons/Modal.vue";
+
 export default {
   components: { MoveButton, DeleteButton, Modal },
   props: ["value", "taskId"],
@@ -65,7 +66,7 @@ export default {
       emit("update-task", { id: props.taskId, value: changeTask.value });
     };
 
-    watch(() => props.value,(newTask) => {
+    watch(() => props.value, (newTask) => {
         task.value = newTask;
         changeTask.value = newTask;
       }

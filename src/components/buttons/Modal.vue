@@ -21,7 +21,7 @@
 <script>
 import { computed } from "vue";
 export default {
-  props: ["taskId", "completeTaskId", "showModal", "task", "completedTasks"],
+  props: ["taskId", "completeTaskId", "task", "completedTasks"],
   setup(props, { emit }) {
     const task = computed(() =>{
         return props.task;
@@ -30,18 +30,14 @@ export default {
     const completedTasks = computed(() =>{
         return props.completedTasks;
     });
-
-    const showModal = computed(() => {
-      return props.showModal;
-    });
-        
+    
     const handleDelete = () => {
       emit("delete-task", props.taskId);
       emit("completed-delete-task", props.completeTaskId);
       emit("close");
     };
 
-    return { handleDelete, showModal, task, completedTasks };
+    return { handleDelete, task, completedTasks };
   },
 };
 </script>

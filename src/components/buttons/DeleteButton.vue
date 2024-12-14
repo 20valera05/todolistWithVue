@@ -6,7 +6,6 @@
       @close="showModal = false"
       :taskId="taskId"
       :completeTaskId="completeTaskId"
-      :showModal="showModal"
       :task="task"
       :completedTasks="completedTasks"
     />
